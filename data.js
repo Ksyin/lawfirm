@@ -9,136 +9,55 @@ const PRACTICE_AREAS = [
     id: "litigation",
     title: "Litigation & Dispute Resolution",
     icon: "gavel",
-    text: "We represent clients in civil, commercial and other disputes before courts and tribunals, providing strategic advocacy and practical solutions.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
-    summary: "We provide strategic advocacy and practical legal representation for individuals, businesses, and institutions facing disputes before Kenyan courts and tribunals.",
-    focus: "Strategic case preparation, court advocacy, negotiations, and risk-based dispute management.",
-    bullets: [
-      "Civil, commercial and contractual disputes",
-      "Court representation and pleadings",
-      "Negotiation, settlement and enforcement strategies"
-    ],
-    details: "Our litigation team works closely with clients to assess the merits of each matter, manage deadlines, and pursue effective outcomes while keeping litigation practical and cost-aware."
+    text: "We represent clients in civil, commercial and other disputes before courts and tribunals, providing strategic advocacy and practical solutions."
   },
   {
     id: "conveyancing",
     title: "Conveyancing & Real Estate",
     icon: "home",
-    text: "We advise clients on property transactions, land acquisition, transfers, leases, developments and other real estate matters.",
-    image: "https://images.unsplash.com/photo-1552684123-a0e53e3e0eae?auto=format&fit=crop&w=1200&q=80",
-    summary: "From land purchase to lease negotiation and title due diligence, we help clients complete transactions with confidence and clarity.",
-    focus: "Secure property transactions, title review, documentation and development support.",
-    bullets: [
-      "Sale, purchase and transfer of property",
-      "Lease and tenancy documentation",
-      "Title review and due diligence support"
-    ],
-    details: "We guide clients through each stage of the transaction, minimising legal risk and helping them protect their interests in land and property matters."
+    text: "We advise clients on property transactions, land acquisition, transfers, leases, developments and other real estate matters."
   },
   {
     id: "corporate",
     title: "Corporate & Commercial Law",
     icon: "briefcase",
-    text: "We provide legal support to businesses and institutions, including corporate structuring, commercial transactions, contracts and regulatory compliance.",
-    image: "https://images.unsplash.com/photo-1552681528-f87b6b1c11b4?auto=format&fit=crop&w=1200&q=80",
-    summary: "We support businesses with the legal frameworks they need to operate, grow and protect their commercial interests.",
-    focus: "Corporate governance, contracts, risk review and business advisory support.",
-    bullets: [
-      "Contract review and drafting",
-      "Corporate structuring and governance",
-      "Commercial transactions and compliance"
-    ],
-    details: "Our commercial law advice is practical and business-focused, helping founders, SMEs and institutions make well-informed legal decisions."
+    text: "We provide legal support to businesses and institutions, including corporate structuring, commercial transactions, contracts and regulatory compliance."
   },
   {
     id: "employment",
     title: "Employment & Labour Law",
     icon: "users",
-    text: "We advise and represent employers and employees in employment disputes, workplace matters and other labour-related issues.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
-    summary: "We advise employers and employees on workplace rights, disputes and compliance with labour law requirements.",
-    focus: "Employment contracts, disciplinary processes, terminations and workplace dispute resolution.",
-    bullets: [
-      "Employment contracts and policies",
-      "Workplace disputes and grievances",
-      "Termination, redundancy and labour compliance"
-    ],
-    details: "We help clients manage sensitive employment issues carefully, with a focus on fairness, compliance and sustainable business outcomes."
+    text: "We advise and represent employers and employees in employment disputes, workplace matters and other labour-related issues."
   },
   {
     id: "family",
     title: "Family Law",
     icon: "family",
-    text: "We provide professional and sensitive legal assistance in matters relating to marriage, divorce, children and other family-related disputes.",
-    image: "https://images.unsplash.com/photo-1566946124657-3e1b5adc0b68?auto=format&fit=crop&w=1200&q=80",
-    summary: "We offer compassionate and practical legal support for family matters that affect wellbeing, children and long-term security.",
-    focus: "Divorce, child custody, maintenance and family mediation support.",
-    bullets: [
-      "Marriage and divorce matters",
-      "Children and custody arrangements",
-      "Maintenance and family disputes"
-    ],
-    details: "We approach family matters with discretion and clarity, guiding clients toward sensible solutions while protecting the best interests of affected parties."
+    text: "We provide professional and sensitive legal assistance in matters relating to marriage, divorce, children and other family-related disputes."
   },
   {
     id: "succession",
     title: "Succession & Probate",
     icon: "document",
-    text: "We assist clients with estate planning, administration of estates and succession disputes.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
-    summary: "We help families and executors navigate estate administration, inheritance issues and succession planning with confidence.",
-    focus: "Probate, estate administration and inheritance dispute resolution.",
-    bullets: [
-      "Will drafting and estate planning",
-      "Probate and administration of estates",
-      "Inheritance and succession dispute support"
-    ],
-    details: "Our succession practice focuses on safeguarding family interests, reducing uncertainty, and supporting orderly administration of estates."
+    text: "We assist clients with estate planning, administration of estates and succession disputes."
   },
   {
     id: "debt-recovery",
     title: "Debt Recovery",
     icon: "coins",
-    text: "We assist individuals and businesses in recovering outstanding debts through strategic legal enforcement.",
-    image: "https://images.unsplash.com/photo-1552681528-47dc08dcad12?auto=format&fit=crop&w=1200&q=80",
-    summary: "We support creditors in recovering outstanding amounts efficiently, professionally and in line with the law.",
-    focus: "Debt claims, demand notices, enforcement and negotiations.",
-    bullets: [
-      "Demand letters and recovery strategy",
-      "Claim preparation and negotiations",
-      "Enforcement and litigation support"
-    ],
-    details: "We build effective recovery strategies that balance speed, fairness and enforceability so clients can protect their cash flow and commercial interests."
+    text: "We assist individuals and businesses in recovering outstanding debts through strategic legal enforcement."
   },
   {
     id: "ip",
     title: "Intellectual Property",
     icon: "bulb",
-    text: "We advise clients on the protection and management of intellectual property and related commercial rights.",
-    image: "https://images.unsplash.com/photo-1552681528-33a39209e4d9?auto=format&fit=crop&w=1200&q=80",
-    summary: "We guide creators, innovators and businesses in protecting and commercialising their intellectual property assets.",
-    focus: "Brand, invention and creative asset protection strategies.",
-    bullets: [
-      "Trademark and brand protection",
-      "IP review and filing support",
-      "Commercial licensing and enforcement"
-    ],
-    details: "Our approach helps clients safeguard their ideas, brand value and proprietary innovations while managing commercial risk."
+    text: "We advise clients on the protection and management of intellectual property and related commercial rights."
   },
   {
     id: "arbitration",
     title: "Arbitration & Alternative Dispute Resolution",
     icon: "handshake",
-    text: "We help clients resolve disputes efficiently through arbitration, mediation and other alternative dispute resolution mechanisms.",
-    image: "https://images.unsplash.com/photo-1552681528-47dc08dcad21?auto=format&fit=crop&w=1200&q=80",
-    summary: "We help clients resolve commercial and civil disputes through efficient, private and practical resolution channels.",
-    focus: "Arbitration, mediation and negotiated dispute resolution strategies.",
-    bullets: [
-      "Arbitration and mediation support",
-      "Negotiated settlements and ADR planning",
-      "Efficient dispute management"
-    ],
-    details: "We work to resolve disputes quickly and cost-effectively while preserving business relationships wherever possible."
+    text: "We help clients resolve disputes efficiently through arbitration, mediation and other alternative dispute resolution mechanisms."
   }
 ];
 
