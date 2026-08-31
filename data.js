@@ -10,7 +10,7 @@ const PRACTICE_AREAS = [
     title: "Litigation & Dispute Resolution",
     icon: "gavel",
     text: "We represent clients in civil, commercial and other disputes before courts and tribunals, providing strategic advocacy and practical solutions.",
-    image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80",
     summary: "We provide strategic advocacy and practical legal representation for individuals, businesses, and institutions facing disputes before Kenyan courts and tribunals.",
     focus: "Strategic case preparation, court advocacy, negotiations, and risk-based dispute management.",
     bullets: [
@@ -25,7 +25,7 @@ const PRACTICE_AREAS = [
     title: "Conveyancing & Real Estate",
     icon: "home",
     text: "We advise clients on property transactions, land acquisition, transfers, leases, developments and other real estate matters.",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
     summary: "From land purchase to lease negotiation and title due diligence, we help clients complete transactions with confidence and clarity.",
     focus: "Secure property transactions, title review, documentation and development support.",
     bullets: [
@@ -40,7 +40,7 @@ const PRACTICE_AREAS = [
     title: "Corporate & Commercial Law",
     icon: "briefcase",
     text: "We provide legal support to businesses and institutions, including corporate structuring, commercial transactions, contracts and regulatory compliance.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
     summary: "We support businesses with the legal frameworks they need to operate, grow and protect their commercial interests.",
     focus: "Corporate governance, contracts, risk review and business advisory support.",
     bullets: [
@@ -55,7 +55,7 @@ const PRACTICE_AREAS = [
     title: "Employment & Labour Law",
     icon: "users",
     text: "We advise and represent employers and employees in employment disputes, workplace matters and other labour-related issues.",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
     summary: "We advise employers and employees on workplace rights, disputes and compliance with labour law requirements.",
     focus: "Employment contracts, disciplinary processes, terminations and workplace dispute resolution.",
     bullets: [
@@ -70,7 +70,7 @@ const PRACTICE_AREAS = [
     title: "Family Law",
     icon: "family",
     text: "We provide professional and sensitive legal assistance in matters relating to marriage, divorce, children and other family-related disputes.",
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
     summary: "We offer compassionate and practical legal support for family matters that affect wellbeing, children and long-term security.",
     focus: "Divorce, child custody, maintenance and family mediation support.",
     bullets: [
