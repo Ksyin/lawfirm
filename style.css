@@ -136,20 +136,21 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 .header-inner {
   display: flex;
   align-items: center;
-  gap: 22px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  gap: 14px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
-.brand { display: flex; align-items: center; gap: 10px; color: var(--navy); margin-right: auto; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--navy); margin-right: auto; margin-left: 0; }
 .brand-logo-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: auto;
+  margin-right: 0;
+  margin-left: 0;
   flex-shrink: 0;
 }
 .brand-logo-mark {
-  width: 170px;
+  width: 165px;
   max-width: 100%;
   height: auto;
   display: block;
@@ -165,14 +166,14 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   .brand-logo-mark-footer { width: 120px; }
 }
 
-.main-nav { display: flex; align-items: center; gap: 22px; }
+.main-nav { display: flex; align-items: center; gap: 12px; }
 .main-nav > a {
-  font-size: .82rem;
+  font-size: .76rem;
   font-weight: 700;
-  letter-spacing: .06em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--navy);
-  padding: 10px 0;
+  padding: 8px 0;
   border-bottom: 2px solid transparent;
   transition: color .15s ease, border-color .15s ease;
 }
@@ -289,16 +290,30 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   align-items: center;
   gap: 10px;
   text-transform: uppercase;
-  letter-spacing: .12em;
-  font-size: .8rem;
+  letter-spacing: .14em;
+  font-size: .72rem;
   font-weight: 700;
   color: var(--gold);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
-.hero .eyebrow::before { content: ""; width: 30px; height: 2px; background: var(--gold); display: inline-block; }
-.hero h1 { color: #fff; font-size: clamp(2.2rem, 4.8vw, 3.6rem); margin-bottom: 22px; letter-spacing: -.01em; }
-.hero h1 span { color: #cfe0f5; }
-.hero-copy { color: #d6e0ee; font-size: 1.08rem; max-width: 560px; margin-bottom: 36px; }
+.hero .eyebrow::before { content: ""; width: 32px; height: 1.5px; background: var(--gold); display: inline-block; }
+.hero h1 {
+  color: #fff;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  margin-bottom: 18px;
+  letter-spacing: -.05em;
+  line-height: .96;
+  font-weight: 600;
+  max-width: 620px;
+}
+.hero h1 span { color: #dfeaf7; }
+.hero-copy {
+  color: rgba(255,255,255,.84);
+  font-size: 1.08rem;
+  max-width: 590px;
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
 .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
 .hero-visual {
   position: relative;
