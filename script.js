@@ -731,7 +731,7 @@
     renderOffices();
     renderHeroStats();
     renderTestimonials();
-    renderTeam();
+    renderTeam(); 
     renderInsights();
     initHeaderScroll();
     initMobileNav();
