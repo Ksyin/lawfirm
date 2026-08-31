@@ -230,7 +230,7 @@ const INSIGHTS = [
     title: "What to Check Before Signing a Land Sale Agreement in Kenya",
     excerpt: "Due diligence steps every buyer should take before committing to a property transaction."
   },
-  {
+  { 
     tag: "Employment Law",
     title: "Understanding Your Rights Under the Employment Act",
     excerpt: "A brief guide to termination notices, redundancy and dispute resolution for employees and employers."
