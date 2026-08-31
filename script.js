@@ -647,10 +647,15 @@
 
     if (isPracticePage) {
       renderPracticeDetailPage();
+      renderPracticeDropdown();
+      renderFooterPracticeAreas();
       initHeaderScroll();
       initMobileNav();
       initDropdown();
+      initBackToTop();
       initLearnMoreLinks();
+      initScrollReveal();
+      setYear();
       return;
     }
 
