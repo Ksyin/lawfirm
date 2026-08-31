@@ -10,7 +10,7 @@ const PRACTICE_AREAS = [
     title: "Litigation & Dispute Resolution",
     icon: "gavel",
     text: "We represent clients in civil, commercial and other disputes before courts and tribunals, providing strategic advocacy and practical solutions.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80&person=black",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
     summary: "We provide strategic advocacy and practical legal representation for individuals, businesses, and institutions facing disputes before Kenyan courts and tribunals.",
     focus: "Strategic case preparation, court advocacy, negotiations, and risk-based dispute management.",
     bullets: [
@@ -25,7 +25,7 @@ const PRACTICE_AREAS = [
     title: "Conveyancing & Real Estate",
     icon: "home",
     text: "We advise clients on property transactions, land acquisition, transfers, leases, developments and other real estate matters.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1552684123-a0e53e3e0eae?auto=format&fit=crop&w=1200&q=80",
     summary: "From land purchase to lease negotiation and title due diligence, we help clients complete transactions with confidence and clarity.",
     focus: "Secure property transactions, title review, documentation and development support.",
     bullets: [
@@ -40,7 +40,7 @@ const PRACTICE_AREAS = [
     title: "Corporate & Commercial Law",
     icon: "briefcase",
     text: "We provide legal support to businesses and institutions, including corporate structuring, commercial transactions, contracts and regulatory compliance.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1552681528-f87b6b1c11b4?auto=format&fit=crop&w=1200&q=80",
     summary: "We support businesses with the legal frameworks they need to operate, grow and protect their commercial interests.",
     focus: "Corporate governance, contracts, risk review and business advisory support.",
     bullets: [
@@ -55,7 +55,7 @@ const PRACTICE_AREAS = [
     title: "Employment & Labour Law",
     icon: "users",
     text: "We advise and represent employers and employees in employment disputes, workplace matters and other labour-related issues.",
-    image: "https://images.unsplash.com/photo-1491633811361-09e6fc87dfa1?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
     summary: "We advise employers and employees on workplace rights, disputes and compliance with labour law requirements.",
     focus: "Employment contracts, disciplinary processes, terminations and workplace dispute resolution.",
     bullets: [
@@ -70,7 +70,7 @@ const PRACTICE_AREAS = [
     title: "Family Law",
     icon: "family",
     text: "We provide professional and sensitive legal assistance in matters relating to marriage, divorce, children and other family-related disputes.",
-    image: "https://images.unsplash.com/photo-1511631579d61-8e47d6f6a97d?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1566946124657-3e1b5adc0b68?auto=format&fit=crop&w=1200&q=80",
     summary: "We offer compassionate and practical legal support for family matters that affect wellbeing, children and long-term security.",
     focus: "Divorce, child custody, maintenance and family mediation support.",
     bullets: [
@@ -85,7 +85,7 @@ const PRACTICE_AREAS = [
     title: "Succession & Probate",
     icon: "document",
     text: "We assist clients with estate planning, administration of estates and succession disputes.",
-    image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
     summary: "We help families and executors navigate estate administration, inheritance issues and succession planning with confidence.",
     focus: "Probate, estate administration and inheritance dispute resolution.",
     bullets: [
@@ -100,7 +100,7 @@ const PRACTICE_AREAS = [
     title: "Debt Recovery",
     icon: "coins",
     text: "We assist individuals and businesses in recovering outstanding debts through strategic legal enforcement.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1552681528-47dc08dcad12?auto=format&fit=crop&w=1200&q=80",
     summary: "We support creditors in recovering outstanding amounts efficiently, professionally and in line with the law.",
     focus: "Debt claims, demand notices, enforcement and negotiations.",
     bullets: [
@@ -115,7 +115,7 @@ const PRACTICE_AREAS = [
     title: "Intellectual Property",
     icon: "bulb",
     text: "We advise clients on the protection and management of intellectual property and related commercial rights.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1552681528-33a39209e4d9?auto=format&fit=crop&w=1200&q=80",
     summary: "We guide creators, innovators and businesses in protecting and commercialising their intellectual property assets.",
     focus: "Brand, invention and creative asset protection strategies.",
     bullets: [
@@ -130,7 +130,7 @@ const PRACTICE_AREAS = [
     title: "Arbitration & Alternative Dispute Resolution",
     icon: "handshake",
     text: "We help clients resolve disputes efficiently through arbitration, mediation and other alternative dispute resolution mechanisms.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1552681528-47dc08dcad21?auto=format&fit=crop&w=1200&q=80",
     summary: "We help clients resolve commercial and civil disputes through efficient, private and practical resolution channels.",
     focus: "Arbitration, mediation and negotiated dispute resolution strategies.",
     bullets: [
