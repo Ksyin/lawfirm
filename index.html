@@ -8,7 +8,680 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<style>
+/* ==========================================================================
+   A.A. Mudanya & Co. Advocates — stylesheet
+   Palette:  --navy (deep brand navy) / --blue (accent, CTAs, links)
+             --gold (understated highlight) / --ink (body text) / --paper (bg)
+   Type:     Source Serif 4 for headings, Inter for UI/body
+   ========================================================================== */
+
+:root {
+  --navy: #0c2340;
+  --navy-2: #102b4e;
+  --blue: #1e5aa8;
+  --blue-dark: #164680;
+  --gold: #b98a3d;
+  --ink: #232a33;
+  --ink-soft: #5b6472;
+  --paper: #ffffff;
+  --paper-2: #f5f7fa;
+  --line: #e3e8ee;
+
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --container: 1180px;
+  --radius: 6px;
+  --shadow: 0 10px 30px rgba(12, 35, 64, 0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; color: var(--navy); margin: 0 0 .5em; line-height: 1.2; }
+p { margin: 0 0 1em; color: var(--ink-soft); }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: .92rem;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, transform .12s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-dark); }
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.55); }
+.btn-outline:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+.btn-outline-dark { background: transparent; color: var(--blue); border-color: var(--blue); }
+.btn-outline-dark:hover { background: var(--blue); color: #fff; }
+.btn-outline-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.btn-outline-light:hover { background: #fff; color: var(--navy); }
+.btn-light { background: #fff; color: var(--navy); }
+.btn-light:hover { background: var(--paper-2); }
+.btn-sm { padding: 9px 18px; font-size: .82rem; }
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin: 0 0 .6em;
+}
+.section-tag::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: var(--gold);
+  display: inline-block;
+}
+.section-tag-light { color: #9fc0e8; }
+
+/* ---------- scroll reveal ---------- */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+.practice-grid .reveal:nth-child(2) { transition-delay: .05s; }
+.practice-grid .reveal:nth-child(3) { transition-delay: .1s; }
+.practice-grid .reveal:nth-child(5) { transition-delay: .05s; }
+.practice-grid .reveal:nth-child(6) { transition-delay: .1s; }
+.practice-grid .reveal:nth-child(8) { transition-delay: .05s; }
+.practice-grid .reveal:nth-child(9) { transition-delay: .1s; }
+.why-grid .reveal:nth-child(2) { transition-delay: .06s; }
+.why-grid .reveal:nth-child(3) { transition-delay: .12s; }
+.why-grid .reveal:nth-child(4) { transition-delay: .18s; }
+.why-grid .reveal:nth-child(5) { transition-delay: .24s; }
+.testimonial-grid .reveal:nth-child(2) { transition-delay: .08s; }
+.testimonial-grid .reveal:nth-child(3) { transition-delay: .16s; }
+
+/* ================= UTILITY BAR ================= */
+.utility-bar { background: var(--navy); color: #b9c8dd; font-size: .8rem; }
+.utility-inner { display: flex; justify-content: space-between; align-items: center; padding: 9px 24px; gap: 20px; flex-wrap: wrap; }
+.utility-contact { display: flex; gap: 24px; flex-wrap: wrap; }
+.utility-contact a { display: inline-flex; align-items: center; gap: 6px; color: #b9c8dd; transition: color .15s ease; }
+.utility-contact a:hover { color: #fff; }
+.utility-social { display: flex; align-items: center; gap: 14px; }
+.utility-social a { color: #b9c8dd; display: flex; }
+.utility-social a:hover { color: var(--gold); }
+.utility-divider { width: 1px; height: 14px; background: rgba(255,255,255,.2); }
+
+/* ================= HEADER ================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow .2s ease;
+}
+.site-header.scrolled { box-shadow: 0 2px 16px rgba(12,35,64,.08); }
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: var(--navy); margin-right: auto; }
+.brand-mark { color: var(--navy); flex-shrink: 0; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; font-family: var(--font-display); }
+.brand-text strong { font-size: .92rem; letter-spacing: .02em; }
+.brand-text em { font-style: normal; font-size: .68rem; letter-spacing: .1em; color: var(--blue); }
+
+.main-nav { display: flex; align-items: center; gap: 26px; }
+.main-nav > a {
+  font-size: .93rem;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+.main-nav > a:hover,
+.main-nav > a.active { color: var(--blue); border-color: var(--blue); }
+
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: .93rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 6px 2px;
+}
+.nav-dropdown-toggle:hover { color: var(--blue); }
+.nav-dropdown-toggle svg { transition: transform .15s ease; }
+.nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-width: 260px;
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+}
+.nav-dropdown.open .nav-dropdown-menu { display: flex; }
+.nav-dropdown-menu a {
+  padding: 9px 12px;
+  font-size: .87rem;
+  border-radius: 4px;
+  color: var(--ink);
+}
+.nav-dropdown-menu a:hover { background: var(--paper-2); color: var(--blue); }
+
+.btn-nav { flex-shrink: 0; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.nav-toggle span { display: block; height: 2px; width: 100%; background: var(--navy); transition: transform .2s ease, opacity .2s ease; }
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+  padding-bottom: 70px;
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(6,18,34,.96) 0%, rgba(12,35,64,.9) 45%, rgba(12,35,64,.68) 100%),
+    repeating-linear-gradient(115deg, #17365f 0 2px, #0c2340 2px 90px);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 700px 500px at 85% 20%, rgba(185,138,61,.16), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 60% 90%, rgba(30,90,168,.35), transparent 60%);
+}
+.hero-scales {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-58%);
+  width: min(300px, 26vw);
+  height: auto;
+  color: rgba(207,224,245,.14);
+  z-index: 0;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 720px; padding-top: 60px; padding-bottom: 40px; }
+.hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.hero .eyebrow::before { content: ""; width: 30px; height: 2px; background: var(--gold); display: inline-block; }
+.hero h1 { color: #fff; font-size: clamp(2.2rem, 4.8vw, 3.6rem); margin-bottom: 22px; letter-spacing: -.01em; }
+.hero h1 span { color: #cfe0f5; }
+.hero-copy { color: #d6e0ee; font-size: 1.1rem; max-width: 560px; margin-bottom: 36px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+.hero-stats {
+  position: relative;
+  z-index: 1;
+  background: rgba(6,18,34,.55);
+  border-top: 1px solid rgba(255,255,255,.1);
+  backdrop-filter: blur(2px);
+}
+.hero-stats-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 26px 24px;
+}
+.stat { text-align: center; border-right: 1px solid rgba(255,255,255,.12); padding: 0 12px; }
+.stat:last-child { border-right: none; }
+.stat-value { display: block; font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+.stat-label { display: block; font-size: .78rem; letter-spacing: .03em; color: #b9c8dd; }
+
+/* ================= ABOUT ================= */
+.about { padding: 90px 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 60px; align-items: center; }
+.about-media img { border-radius: var(--radius); box-shadow: var(--shadow); }
+.about-copy h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.about-copy p { max-width: 54ch; }
+
+/* ================= PRACTICE AREAS ================= */
+.practice-areas { padding: 90px 0; background: var(--paper-2); }
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 44px; flex-wrap: wrap; }
+.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0; }
+.section-sub { max-width: 320px; margin: 0; text-align: right; }
+@media (max-width: 700px) { .section-sub { text-align: left; } }
+
+.practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.practice-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 26px 26px;
+  overflow: hidden;
+  transition: box-shadow .25s ease, border-color .25s ease, transform .25s ease;
+}
+.practice-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+.practice-card:hover {
+  box-shadow: var(--shadow);
+  border-color: transparent;
+  transform: translateY(-4px);
+}
+.practice-card:hover::before { transform: scaleX(1); }
+.practice-index {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--line);
+}
+.practice-icon {
+  width: 52px; height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(150deg, var(--navy), var(--blue-dark));
+  color: #cfe0f5;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+.practice-card h3 { font-size: 1.08rem; margin-bottom: 10px; padding-right: 30px; }
+.practice-card p { font-size: .92rem; margin-bottom: 16px; }
+.learn-more { display: inline-flex; align-items: center; gap: 6px; color: var(--blue); font-weight: 600; font-size: .88rem; }
+.learn-more svg { transition: transform .15s ease; }
+.learn-more:hover svg { transform: translateX(3px); }
+
+/* ================= WHY CHOOSE US ================= */
+.why-us {
+  position: relative;
+  background: var(--navy);
+  color: #fff;
+  padding: 90px 0;
+  overflow: hidden;
+}
+.why-us::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 900px 500px at 12% 100%, rgba(30,90,168,.35), transparent 60%);
+  pointer-events: none;
+}
+.why-us .container { position: relative; }
+.why-us h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.1rem); max-width: 640px; margin-bottom: 44px; }
+.why-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+.why-card {
+  text-align: center;
+  padding: 26px 14px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  transition: background .2s ease, transform .2s ease;
+}
+.why-card:hover { background: rgba(255,255,255,.08); transform: translateY(-3px); }
+.why-icon {
+  width: 60px; height: 60px;
+  margin: 0 auto 18px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(150deg, var(--gold), #8a6529);
+  border-radius: 50%;
+  color: #12202f;
+}
+.why-card h3 { color: #fff; font-size: 1rem; margin-bottom: 8px; }
+.why-card p { color: #b9c8dd; font-size: .87rem; margin: 0; }
+
+/* ================= TESTIMONIALS ================= */
+.testimonials { padding: 90px 0; }
+.testimonials h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 44px; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.testimonial-card {
+  margin: 0;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+}
+.quote-mark { color: var(--blue); opacity: .35; margin-bottom: 14px; }
+.testimonial-card blockquote { margin: 0 0 20px; font-size: .96rem; color: var(--ink); font-style: italic; }
+.testimonial-card figcaption { display: flex; flex-direction: column; gap: 2px; }
+.testimonial-card figcaption strong { font-size: .9rem; color: var(--navy); }
+.testimonial-card figcaption span { font-size: .82rem; color: var(--ink-soft); }
+
+/* ================= TEAM ================= */
+.team { padding: 90px 0; background: var(--paper-2); }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.team-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 22px;
+  text-align: center;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.team-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+.team-avatar {
+  width: 72px; height: 72px;
+  margin: 0 auto 18px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(150deg, var(--navy), var(--blue-dark));
+  color: #cfe0f5;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.team-card h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.team-role { color: var(--blue); font-size: .84rem; font-weight: 600; margin-bottom: 10px; }
+.team-focus { font-size: .85rem; margin: 0; }
+
+/* ================= INSIGHTS ================= */
+.insights { padding: 90px 0; }
+.insights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.insight-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.insight-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+.insight-tag {
+  display: inline-block;
+  font-size: .74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--blue);
+  background: #eaf1fa;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.insight-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.insight-card p { font-size: .9rem; margin-bottom: 16px; }
+
+/* ================= OFFICES ================= */
+.offices { padding: 90px 0; }
+.offices-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; align-items: stretch; }
+.offices-list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.office-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+.office-card h3 { display: flex; align-items: center; gap: 8px; font-size: 1.05rem; margin-bottom: 14px; color: var(--navy); }
+.office-card h3 svg { color: var(--blue); flex-shrink: 0; }
+.office-address { font-size: .9rem; margin-bottom: 14px; }
+.office-phones { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.office-phones a { display: inline-flex; align-items: center; gap: 8px; font-size: .9rem; color: var(--ink); font-weight: 500; }
+.office-phones a:hover { color: var(--blue); }
+.office-phones svg { color: var(--blue); flex-shrink: 0; }
+
+.assist-card {
+  background: linear-gradient(150deg, var(--blue-dark), var(--navy));
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 40px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.assist-copy { color: #d6e0ee; font-size: 1.02rem; margin-bottom: 26px; }
+.assist-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* ================= CONTACT FORM ================= */
+.contact-form-section { background: var(--paper-2); padding: 90px 0; }
+.contact-form-section h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 34px; }
+.contact-form { max-width: 720px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.form-field { margin-bottom: 20px; }
+.form-field label { display: block; font-size: .87rem; font-weight: 600; margin-bottom: 7px; color: var(--navy); }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: .95rem;
+  background: #fff;
+  color: var(--ink);
+  transition: border-color .15s ease;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus { border-color: var(--blue); outline: none; }
+.form-field textarea { resize: vertical; }
+.form-error { display: block; min-height: 1.2em; color: #b3261e; font-size: .8rem; margin-top: 5px; }
+.form-status { margin-top: 16px; font-size: .92rem; font-weight: 600; min-height: 1.2em; }
+.form-status.success { color: #1b7a3d; }
+
+/* ================= WHATSAPP FAB ================= */
+.whatsapp-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  z-index: 50;
+  transition: transform .15s ease;
+}
+.whatsapp-fab:hover { transform: scale(1.06); }
+
+/* ================= BACK TO TOP ================= */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease;
+  z-index: 50;
+}
+.back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+/* ================= FOOTER ================= */
+.site-footer { background: #081627; color: #b9c8dd; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr .9fr 1.2fr 1.1fr 1.2fr;
+  gap: 34px;
+  padding: 70px 0 50px;
+}
+.footer-brand p { color: #93a6bf; font-size: .9rem; }
+.brand-footer { color: #fff; margin-bottom: 14px; }
+.brand-footer .brand-text em { color: #9fc0e8; }
+.social-links { display: flex; gap: 12px; margin-top: 18px; }
+.social-links a {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+  color: #cfe0f5;
+  transition: background .15s ease, border-color .15s ease;
+}
+.social-links a:hover { background: var(--blue); border-color: var(--blue); }
+
+.footer-col h4 { color: #fff; font-family: var(--font-body); font-size: .92rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 18px; }
+.footer-col ul { display: flex; flex-direction: column; gap: 11px; }
+.footer-col a { font-size: .9rem; color: #a9bad2; transition: color .15s ease; }
+.footer-col a:hover { color: #fff; }
+.footer-contact li { line-height: 1.5; }
+
+.footer-newsletter p { color: #93a6bf; font-size: .87rem; margin-bottom: 16px; }
+.newsletter-form { display: flex; gap: 0; border: 1px solid rgba(255,255,255,.2); border-radius: var(--radius); overflow: hidden; }
+.newsletter-form input {
+  flex: 1;
+  border: none;
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: .87rem;
+}
+.newsletter-form input::placeholder { color: #7c8fab; }
+.newsletter-form input:focus { outline: none; background: rgba(255,255,255,.1); }
+.newsletter-form button {
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  padding: 0 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease;
+}
+.newsletter-form button:hover { background: var(--blue-dark); }
+.footer-newsletter .form-status { font-size: .8rem; margin-top: 10px; color: #9fc0e8; }
+.footer-newsletter .form-status.success { color: #6fd694; }
+
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.08); }
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 0;
+  font-size: .82rem;
+  color: #7c8fab;
+}
+.footer-bottom-inner a:hover { color: #fff; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 980px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-media { order: -1; }
+  .practice-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(3, 1fr); }
+  .offices-grid { grid-template-columns: 1fr; }
+  .offices-list { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .insights-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats-inner { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
+  .stat:nth-child(2) { border-right: none; }
+  .hero-scales { display: none; }
+  .utility-contact a:nth-child(2) { display: none; }
+}
+
+@media (max-width: 760px) {
+  .utility-bar { display: none; }
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 14px 24px 20px;
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    display: none;
+  }
+  .main-nav.open { display: flex; }
+  .main-nav > a, .nav-dropdown-toggle { width: 100%; padding: 10px 0; }
+  .nav-dropdown-menu { position: static; transform: none; box-shadow: none; border: none; width: 100%; padding: 0 0 0 12px; }
+  .btn-nav { display: none; }
+  .nav-toggle { display: flex; }
+  .practice-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .offices-list { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; padding-bottom: 30px; }
+  .footer-bottom-inner { flex-direction: column; text-align: center; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .insights-grid { grid-template-columns: 1fr; }
+  .hero-stats-inner { grid-template-columns: 1fr 1fr; }
+}
+
+</style>
 </head>
 <body>
 
@@ -107,7 +780,41 @@
 <section class="about" id="about">
   <div class="container about-grid">
     <div class="about-media">
-      <img src="assets/office.svg" alt="A.A. Mudanya &amp; Co. Advocates boardroom" loading="lazy">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="A.A. Mudanya & Co. Advocates boardroom illustration">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b3a63"/>
+      <stop offset="1" stop-color="#0c2340"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a4a5c"/>
+      <stop offset="1" stop-color="#232e3b"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#wall)"/>
+  <rect x="0" y="0" width="640" height="330" fill="#22364f" opacity="0.5"/>
+  <!-- window -->
+  <rect x="40" y="40" width="220" height="260" rx="4" fill="#a9c6e6" opacity="0.35"/>
+  <rect x="40" y="40" width="220" height="260" rx="4" fill="none" stroke="#dce8f5" stroke-width="4" opacity="0.5"/>
+  <line x1="150" y1="40" x2="150" y2="300" stroke="#dce8f5" stroke-width="3" opacity="0.5"/>
+  <!-- logo mark on wall -->
+  <polygon points="440,90 480,170 460,170 440,130 420,170 400,170" fill="#cfe0f5" opacity="0.85"/>
+  <text x="440" y="200" text-anchor="middle" fill="#cfe0f5" font-family="Georgia, serif" font-size="20" opacity="0.85">A.A. MUDANYA &amp; CO.</text>
+  <text x="440" y="222" text-anchor="middle" fill="#9fc0e8" font-family="Georgia, serif" font-size="12" letter-spacing="2" opacity="0.8">ADVOCATES</text>
+  <!-- table -->
+  <rect x="60" y="330" width="520" height="70" rx="8" fill="url(#table)"/>
+  <rect x="60" y="330" width="520" height="10" rx="4" fill="#4a5b6e"/>
+  <!-- chairs -->
+  <g fill="#12202f">
+    <rect x="90" y="300" width="34" height="60" rx="8"/>
+    <rect x="180" y="300" width="34" height="60" rx="8"/>
+    <rect x="270" y="300" width="34" height="60" rx="8"/>
+    <rect x="360" y="300" width="34" height="60" rx="8"/>
+    <rect x="450" y="300" width="34" height="60" rx="8"/>
+    <rect x="520" y="300" width="34" height="60" rx="8"/>
+  </g>
+  <rect x="0" y="400" width="640" height="80" fill="#0a1c33"/>
+</svg>
     </div>
     <div class="about-copy">
       <p class="section-tag">About the Firm</p>
@@ -321,7 +1028,586 @@
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="js/data.js"></script>
-<script src="js/script.js"></script>
+<script>
+/* ==========================================================================
+   A.A. Mudanya & Co. Advocates — site content
+   Keeping content as data means the practice-area list, the footer list and
+   the "practice area" dropdown/select all stay in sync from one source.
+   ========================================================================== */
+
+const PRACTICE_AREAS = [
+  {
+    id: "litigation",
+    title: "Litigation & Dispute Resolution",
+    icon: "gavel",
+    text: "We represent clients in civil, commercial and other disputes before courts and tribunals, providing strategic advocacy and practical solutions."
+  },
+  {
+    id: "conveyancing",
+    title: "Conveyancing & Real Estate",
+    icon: "home",
+    text: "We advise clients on property transactions, land acquisition, transfers, leases, developments and other real estate matters."
+  },
+  {
+    id: "corporate",
+    title: "Corporate & Commercial Law",
+    icon: "briefcase",
+    text: "We provide legal support to businesses and institutions, including corporate structuring, commercial transactions, contracts and regulatory compliance."
+  },
+  {
+    id: "employment",
+    title: "Employment & Labour Law",
+    icon: "users",
+    text: "We advise and represent employers and employees in employment disputes, workplace matters and other labour-related issues."
+  },
+  {
+    id: "family",
+    title: "Family Law",
+    icon: "family",
+    text: "We provide professional and sensitive legal assistance in matters relating to marriage, divorce, children and other family-related disputes."
+  },
+  {
+    id: "succession",
+    title: "Succession & Probate",
+    icon: "document",
+    text: "We assist clients with estate planning, administration of estates and succession disputes."
+  },
+  {
+    id: "debt-recovery",
+    title: "Debt Recovery",
+    icon: "coins",
+    text: "We assist individuals and businesses in recovering outstanding debts through strategic legal enforcement."
+  },
+  {
+    id: "ip",
+    title: "Intellectual Property",
+    icon: "bulb",
+    text: "We advise clients on the protection and management of intellectual property and related commercial rights."
+  },
+  {
+    id: "arbitration",
+    title: "Arbitration & Alternative Dispute Resolution",
+    icon: "handshake",
+    text: "We help clients resolve disputes efficiently through arbitration, mediation and other alternative dispute resolution mechanisms."
+  }
+];
+
+const WHY_CHOOSE_US = [
+  {
+    title: "Over 7 Years of Experience",
+    text: "A proven history of providing professional legal services and practical solutions.",
+    icon: "experience"
+  },
+  {
+    title: "Client-Focused Approach",
+    text: "We take time to understand our clients, their concerns and their objectives.",
+    icon: "clients"
+  },
+  {
+    title: "Practical Legal Solutions",
+    text: "We provide clear, strategic legal advice that is sensible and practical.",
+    icon: "solutions"
+  },
+  {
+    title: "Professionalism & Integrity",
+    text: "Our practice is guided by ethical representation, diligence and excellence.",
+    icon: "integrity"
+  },
+  {
+    title: "Accessible Legal Support",
+    text: "With offices in Nairobi and Oyugis, we remain accessible to clients across Kenya.",
+    icon: "location"
+  }
+];
+
+const OFFICES = [
+  {
+    name: "Nairobi Office",
+    address: ["Bruce House, 4th Floor, North Wing", "Suite 401, Standard Street", "P.O. Box 17926-00100, Nairobi"],
+    phones: ["+254 720 847 047", "+254 734 033 547"],
+    mapQuery: "Bruce House Standard Street Nairobi"
+  },
+  {
+    name: "Oyugis Office",
+    address: ["Olando Plaza, 3rd Floor", "Next to Co-operative Bank", "Along Oyugis-Kisumu Road, Oyugis"],
+    phones: ["+254 722 907 020", "+254 735 544 018"],
+    mapQuery: "Olando Plaza Oyugis Kisumu Road"
+  }
+];
+
+const STATS = [
+  { value: "7+", label: "Years of Practice" },
+  { value: "2", label: "Offices Across Kenya" },
+  { value: "9", label: "Practice Areas" },
+  { value: "100%", label: "Client-Focused Advice" }
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "The team handled our commercial dispute with a level of care and clarity we hadn't experienced with previous counsel. Every step was explained before it was taken.",
+    name: "Corporate Client",
+    role: "Manufacturing Sector, Nairobi"
+  },
+  {
+    quote: "Our land transfer had been stalled for months. A.A. Mudanya & Co. Advocates untangled the title issues and kept us informed at every stage.",
+    name: "Private Client",
+    role: "Real Estate Matter, Oyugis"
+  },
+  {
+    quote: "Practical, responsive and easy to reach. They treated our succession matter with the sensitivity it needed.",
+    name: "Family Client",
+    role: "Succession & Probate"
+  }
+];
+
+const TEAM = [
+  {
+    name: "A. A. Mudanya",
+    role: "Managing Partner",
+    focus: "Litigation & Dispute Resolution, Corporate & Commercial Law"
+  },
+  {
+    name: "Advocate, Nairobi Office",
+    role: "Senior Associate",
+    focus: "Conveyancing & Real Estate, Succession & Probate"
+  },
+  {
+    name: "Advocate, Oyugis Office",
+    role: "Associate",
+    focus: "Family Law, Employment & Labour Law"
+  },
+  {
+    name: "Advocate",
+    role: "Associate",
+    focus: "Debt Recovery, Arbitration & ADR"
+  }
+];
+
+const INSIGHTS = [
+  {
+    tag: "Real Estate",
+    title: "What to Check Before Signing a Land Sale Agreement in Kenya",
+    excerpt: "Due diligence steps every buyer should take before committing to a property transaction."
+  },
+  {
+    tag: "Employment Law",
+    title: "Understanding Your Rights Under the Employment Act",
+    excerpt: "A brief guide to termination notices, redundancy and dispute resolution for employees and employers."
+  },
+  {
+    tag: "Succession",
+    title: "Why Every Family Should Have a Will",
+    excerpt: "How proper estate planning can prevent lengthy succession disputes among beneficiaries."
+  }
+];
+
+const FIRM = {
+  name: "A.A. Mudanya & Co. Advocates",
+  tagline: "Trusted Legal Counsel. Practical Solutions.",
+  email: "mudanyalawtech.advocates@gmail.com",
+  whatsapp: "254720847047"
+};
+
+
+/* ==========================================================================
+   A.A. Mudanya & Co. Advocates — site behaviour
+   Vanilla JS, no build step, no dependencies.
+   ========================================================================== */
+
+(function () {
+  "use strict";
+
+  /* ---------- small icon set (inline SVG paths, currentColor) ---------- */
+  const ICONS = {
+    gavel: '<path d="M14.5 12.5l-8 8M17.5 2.5l4 4-3 3-4-4 3-3zM11.5 8.5l6 6-3 3-6-6 3-3zM3 21h9" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    home: '<path d="M3 11l9-8 9 8M5 10v10h14V10" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    briefcase: '<rect x="2.5" y="7.5" width="19" height="12" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M8 7.5V5.5a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" stroke-width="1.8" fill="none"/>',
+    users: '<circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M2.5 20c.6-3.6 3.2-5.6 6.5-5.6s5.9 2 6.5 5.6M16 8.3a3 3 0 110 5.9M17.5 14.4c2.6.5 4.3 2.2 4.8 5.1" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
+    family: '<circle cx="7" cy="6.5" r="2.5" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="17" cy="6.5" r="2.5" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M2 20c.4-3.2 2.3-5 5-5s4.6 1.8 5 5M12 20c.4-3.2 2.3-5 5-5s4.6 1.8 5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
+    document: '<path d="M6 2.5h8l4 4V21a1 1 0 01-1 1H6a1 1 0 01-1-1V3.5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M14 2.5V7h4M8 12h8M8 16h8M8 8h3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>',
+    coins: '<ellipse cx="8" cy="7" rx="5.5" ry="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M2.5 7v4c0 1.7 2.5 3 5.5 3s5.5-1.3 5.5-3V7M2.5 11v4c0 1.7 2.5 3 5.5 3s5.5-1.3 5.5-3v-4" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M13.5 9.3c2.9.2 5 1.4 5 2.8s-2.5 2.7-5.5 2.7c-.9 0-1.8-.1-2.5-.3M13.5 14.8c2.9.2 5 1.4 5 2.8s-2.5 2.7-5.5 2.7c-1.7 0-3.2-.4-4.2-1" stroke="currentColor" stroke-width="1.8" fill="none"/>',
+    bulb: '<path d="M9 18h6M10 21h4M12 2a6.5 6.5 0 00-3.8 11.8c.6.4 1 1.1 1 1.9V16h5.6v-.3c0-.8.4-1.5 1-1.9A6.5 6.5 0 0012 2z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    handshake: '<path d="M2 12l4.5-4.5a2 2 0 012.8 0L11 9M22 12l-4.5-4.5a2 2 0 00-2.8 0L13 9M8 13l2.3 2.3a1.6 1.6 0 002.3-2.3L11 11M16 13l-2.3 2.3a1.6 1.6 0 01-2.3-2.3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    experience: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
+    clients: '<circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M2.5 20c.5-3.4 2.8-5.3 6.5-5.3s6 1.9 6.5 5.3M15.8 15c2.5.3 4.3 1.8 4.7 4.6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
+    solutions: '<path d="M12 3a6.5 6.5 0 00-3.8 11.8c.6.4 1 1.1 1 1.9V17h5.6v-.3c0-.8.4-1.5 1-1.9A6.5 6.5 0 0012 3z" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M9.5 20.5h5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M9 8.5l2 2 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    integrity: '<path d="M12 2l8 3.5v5c0 5-3.4 8.7-8 10.5-4.6-1.8-8-5.5-8-10.5v-5L12 2z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.5 9.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    location: '<path d="M12 21s7-6.3 7-12a7 7 0 10-14 0c0 5.7 7 12 7 12z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8" fill="none"/>',
+    pin: '<path d="M12 21s7-6.3 7-12a7 7 0 10-14 0c0 5.7 7 12 7 12z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8" fill="none"/>',
+    phone: '<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 011.12 4.18 2 2 0 013.1 2h3a2 2 0 012 1.72c.12.9.35 1.79.68 2.63a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.45-1.25a2 2 0 012.11-.45c.84.33 1.73.56 2.63.68A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+  };
+
+  const svg = (name, size = 24) =>
+    `<svg width="${size}" height="${size}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ""}</svg>`;
+
+  /* ---------- render: practice area cards ---------- */
+  function renderPracticeAreas() {
+    const grid = document.getElementById("practiceGrid");
+    if (!grid) return;
+    grid.innerHTML = PRACTICE_AREAS.map(
+      (area, i) => `
+      <article class="practice-card reveal" id="${area.id}">
+        <span class="practice-index">${String(i + 1).padStart(2, "0")}</span>
+        <div class="practice-icon">${svg(area.icon, 26)}</div>
+        <h3>${area.title}</h3>
+        <p>${area.text}</p>
+        <a class="learn-more" href="#contact-form" data-practice="${area.title}">
+          Learn More
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>`
+    ).join("");
+  }
+
+  /* ---------- render: nav "Practice Areas" dropdown ---------- */
+  function renderPracticeDropdown() {
+    const menu = document.getElementById("practiceDropdown");
+    if (!menu) return;
+    menu.innerHTML = PRACTICE_AREAS.map(
+      (area) => `<a href="#${area.id}">${area.title}</a>`
+    ).join("");
+  }
+
+  /* ---------- render: footer practice-area list ---------- */
+  function renderFooterPracticeAreas() {
+    const list = document.querySelector("#footerPractice ul");
+    if (!list) return;
+    list.innerHTML = PRACTICE_AREAS.map(
+      (area) => `<li><a href="#${area.id}">${area.title}</a></li>`
+    ).join("");
+  }
+
+  /* ---------- render: contact-form practice-area select ---------- */
+  function renderPracticeSelect() {
+    const select = document.getElementById("subject");
+    if (!select) return;
+    select.innerHTML =
+      `<option value="">Select a practice area</option>` +
+      PRACTICE_AREAS.map((a) => `<option value="${a.title}">${a.title}</option>`).join("");
+  }
+
+  /* ---------- render: "Why Choose Us" grid ---------- */
+  function renderWhyUs() {
+    const grid = document.getElementById("whyGrid");
+    if (!grid) return;
+    grid.innerHTML = WHY_CHOOSE_US.map(
+      (item) => `
+      <div class="why-card reveal">
+        <div class="why-icon">${svg(item.icon, 26)}</div>
+        <h3>${item.title}</h3>
+        <p>${item.text}</p>
+      </div>`
+    ).join("");
+  }
+
+  /* ---------- render: hero stats strip ---------- */
+  function renderHeroStats() {
+    const wrap = document.getElementById("heroStats");
+    if (!wrap || typeof STATS === "undefined") return;
+    wrap.innerHTML = `<div class="container hero-stats-inner">` +
+      STATS.map(
+        (s) => `
+        <div class="stat">
+          <span class="stat-value">${s.value}</span>
+          <span class="stat-label">${s.label}</span>
+        </div>`
+      ).join("") +
+      `</div>`;
+  }
+
+  /* ---------- render: testimonials ---------- */
+  function renderTestimonials() {
+    const grid = document.getElementById("testimonialGrid");
+    if (!grid || typeof TESTIMONIALS === "undefined") return;
+    grid.innerHTML = TESTIMONIALS.map(
+      (t) => `
+      <figure class="testimonial-card reveal">
+        <svg class="quote-mark" width="30" height="24" viewBox="0 0 30 24" aria-hidden="true"><path d="M0 24V13.8C0 6.2 4.6 1.2 12.4 0l1.6 3.6c-4.6 1.4-7 4-7 8h6.6V24H0zm16.4 0V13.8c0-7.6 4.6-12.6 12.4-13.8L30.4 3.6c-4.6 1.4-7 4-7 8H30V24H16.4z" fill="currentColor"/></svg>
+        <blockquote>${t.quote}</blockquote>
+        <figcaption><strong>${t.name}</strong><span>${t.role}</span></figcaption>
+      </figure>`
+    ).join("");
+  }
+
+  /* ---------- scroll-reveal (single, restrained pattern) ---------- */
+  function initScrollReveal() {
+    const items = document.querySelectorAll(".reveal");
+    if (!items.length) return;
+    if (!("IntersectionObserver" in window)) {
+      items.forEach((el) => el.classList.add("in-view"));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    items.forEach((el) => observer.observe(el));
+  }
+
+  /* ---------- render: offices list ---------- */
+  function renderOffices() {
+    const wrap = document.getElementById("officesList");
+    if (!wrap) return;
+    wrap.innerHTML = OFFICES.map(
+      (office) => `
+      <div class="office-card">
+        <h3>${svg("pin", 18)} ${office.name}</h3>
+        <p class="office-address">${office.address.join("<br>")}</p>
+        <p class="office-phones">
+          ${office.phones
+            .map((p) => `<a href="tel:${p.replace(/\s+/g, "")}">${svg("phone", 14)} ${p}</a>`)
+            .join("")}
+        </p>
+        <a class="btn btn-outline-dark btn-sm" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.mapQuery)}">
+          Get Directions
+        </a>
+      </div>`
+    ).join("");
+  }
+
+  /* ---------- header: scroll shadow + shrink ---------- */
+  function initHeaderScroll() {
+    const header = document.getElementById("header");
+    if (!header) return;
+    const toggle = () => header.classList.toggle("scrolled", window.scrollY > 12);
+    toggle();
+    window.addEventListener("scroll", toggle, { passive: true });
+  }
+
+  /* ---------- mobile nav toggle ---------- */
+  function initMobileNav() {
+    const btn = document.getElementById("navToggle");
+    const nav = document.getElementById("mainNav");
+    if (!btn || !nav) return;
+    btn.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      btn.classList.toggle("open", isOpen);
+      btn.setAttribute("aria-expanded", String(isOpen));
+    });
+    nav.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        btn.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      })
+    );
+  }
+
+  /* ---------- practice-areas dropdown (desktop click + keyboard) ---------- */
+  function initDropdown() {
+    const wrapper = document.querySelector(".nav-dropdown");
+    const toggle = document.querySelector(".nav-dropdown-toggle");
+    if (!wrapper || !toggle) return;
+
+    const close = () => {
+      wrapper.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    };
+
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = wrapper.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!wrapper.contains(e.target)) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  }
+
+  /* ---------- active nav link on scroll (scrollspy) ---------- */
+  function initScrollSpy() {
+    const sections = ["home", "about", "practice-areas", "contact"]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    const links = document.querySelectorAll(".main-nav > a");
+    if (!sections.length || !links.length) return;
+
+    const map = { home: 0, about: 1, "practice-areas": 2, contact: 3 };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            links.forEach((l) => l.classList.remove("active"));
+            const idx = map[entry.target.id];
+            if (links[idx]) links[idx].classList.add("active");
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    sections.forEach((s) => observer.observe(s));
+  }
+
+  /* ---------- back to top ---------- */
+  function initBackToTop() {
+    const btn = document.getElementById("backToTop");
+    if (!btn) return;
+    const toggle = () => btn.classList.toggle("visible", window.scrollY > 500);
+    toggle();
+    window.addEventListener("scroll", toggle, { passive: true });
+    btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  }
+
+  /* ---------- "Learn More" pre-fills the contact form's subject ---------- */
+  function initLearnMoreLinks() {
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("[data-practice]");
+      if (!link) return;
+      const select = document.getElementById("subject");
+      if (select) select.value = link.dataset.practice;
+    });
+  }
+
+  /* ---------- contact form validation (client-side only, no backend) ---------- */
+  function initContactForm() {
+    const form = document.getElementById("contactForm");
+    const status = document.getElementById("formStatus");
+    if (!form) return;
+
+    const showError = (name, msg) => {
+      const el = form.querySelector(`[data-error-for="${name}"]`);
+      if (el) el.textContent = msg;
+    };
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let valid = true;
+      ["fullName", "email", "message"].forEach((name) => showError(name, ""));
+
+      const fullName = form.fullName.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (fullName.length < 2) {
+        showError("fullName", "Please enter your full name.");
+        valid = false;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError("email", "Please enter a valid email address.");
+        valid = false;
+      }
+      if (message.length < 10) {
+        showError("message", "Please tell us a little more about your matter.");
+        valid = false;
+      }
+
+      if (!valid) {
+        status.textContent = "";
+        return;
+      }
+
+      // No backend is wired up yet — this simply confirms receipt to the user
+      // and resets the form. Wire this to your API / mail service as needed.
+      status.textContent = `Thank you, ${fullName.split(" ")[0]}. Your message has been received — we will get back to you shortly.`;
+      status.classList.add("success");
+      form.reset();
+    });
+  }
+
+  /* ---------- render: team grid ---------- */
+  function renderTeam() {
+    const grid = document.getElementById("teamGrid");
+    if (!grid || typeof TEAM === "undefined") return;
+    grid.innerHTML = TEAM.map(
+      (member) => `
+      <div class="team-card reveal">
+        <div class="team-avatar" aria-hidden="true">${initials(member.name)}</div>
+        <h3>${member.name}</h3>
+        <p class="team-role">${member.role}</p>
+        <p class="team-focus">${member.focus}</p>
+      </div>`
+    ).join("");
+  }
+
+  function initials(name) {
+    return name
+      .replace(/^Advocate,?\s*/i, "A")
+      .split(" ")
+      .filter((w) => /^[A-Z]/.test(w))
+      .slice(0, 2)
+      .map((w) => w[0])
+      .join("") || "AA";
+  }
+
+  /* ---------- render: insights grid ---------- */
+  function renderInsights() {
+    const grid = document.getElementById("insightsGrid");
+    if (!grid || typeof INSIGHTS === "undefined") return;
+    grid.innerHTML = INSIGHTS.map(
+      (post) => `
+      <article class="insight-card reveal">
+        <span class="insight-tag">${post.tag}</span>
+        <h3>${post.title}</h3>
+        <p>${post.excerpt}</p>
+        <a class="learn-more" href="#contact-form">
+          Read More
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>`
+    ).join("");
+  }
+
+  /* ---------- footer newsletter (client-side only, no backend) ---------- */
+  function initNewsletterForm() {
+    const form = document.getElementById("newsletterForm");
+    if (!form) return;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = form.newsletterEmail.value.trim();
+      const status = document.getElementById("newsletterStatus");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        status.textContent = "Please enter a valid email address.";
+        status.classList.remove("success");
+        return;
+      }
+      status.textContent = "Thank you for subscribing.";
+      status.classList.add("success");
+      form.reset();
+    });
+  }
+
+  function setYear() {
+    const el = document.getElementById("year");
+    if (el) el.textContent = new Date().getFullYear();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderPracticeAreas();
+    renderPracticeDropdown();
+    renderFooterPracticeAreas();
+    renderPracticeSelect();
+    renderWhyUs();
+    renderOffices();
+    renderHeroStats();
+    renderTestimonials();
+    renderTeam();
+    renderInsights();
+    initHeaderScroll();
+    initMobileNav();
+    initDropdown();
+    initScrollSpy();
+    initBackToTop();
+    initLearnMoreLinks();
+    initContactForm();
+    initNewsletterForm();
+    initScrollReveal();
+    setYear();
+  });
+})();
+
+</script>
 </body>
 </html>
