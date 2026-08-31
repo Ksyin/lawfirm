@@ -1048,7 +1048,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   .team-grid { grid-template-columns: 1fr; }
   .insights-grid { grid-template-columns: 1fr; }
   .hero-stats-inner { grid-template-columns: 1fr 1fr; }
-}
+} 
 
 /* ================= APPOINTMENT MODAL ================= */
 .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 120; }
