@@ -1094,8 +1094,8 @@
     const grid = document.getElementById("teamGrid");
     if (!grid || typeof TEAM === "undefined") return;
     grid.innerHTML = TEAM.map(
-      (member) => `
-      <div class="team-card reveal">
+      (member, index) => `
+      <button type="button" class="team-card reveal" data-team-index="${index}" aria-haspopup="dialog">
         <div class="team-avatar" aria-hidden="true">${
           member.image
             ? `<img src="${member.image}" alt="" loading="lazy">`
@@ -1104,8 +1104,98 @@
         <h3>${member.name}</h3>
         <p class="team-role">${member.role}</p>
         <p class="team-focus">${member.focus}</p>
-      </div>`
+        <span class="team-view-more">View profile</span>
+      </button>`
     ).join("");
+  }
+
+  /* ---------- team profile modal ---------- */
+  function openTeamModal(index) {
+    const modal = document.getElementById("teamModal");
+    const body = document.getElementById("teamModalBody");
+    if (!modal || !body || typeof TEAM === "undefined") return;
+    const member = TEAM[index];
+    if (!member) return;
+
+    const section = (heading, items) =>
+      items && items.length
+        ? `<div class="team-modal-section">
+             <h4>${heading}</h4>
+             <ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>
+           </div>`
+        : "";
+
+    const bioHtml =
+      member.bio && member.bio.length
+        ? `<div class="team-modal-section">${member.bio
+            .map((p) => `<p>${p}</p>`)
+            .join("")}</div>`
+        : "";
+
+    const practiceAreasHtml =
+      member.practiceAreas && member.practiceAreas.length
+        ? `<div class="team-modal-section">
+             <h4>Practice Areas</h4>
+             <div class="team-modal-tags">${member.practiceAreas
+               .map((area) => `<span>${area}</span>`)
+               .join("")}</div>
+           </div>`
+        : member.focus
+        ? `<div class="team-modal-section">
+             <h4>Focus</h4>
+             <p>${member.focus}</p>
+           </div>`
+        : "";
+
+    body.innerHTML = `
+      <div class="team-modal-header">
+        <div class="team-modal-avatar" aria-hidden="true">${
+          member.image
+            ? `<img src="${member.image}" alt="" loading="lazy">`
+            : initials(member.name)
+        }</div>
+        <div>
+          <h3 id="teamModalTitle">${member.name}</h3>
+          <p class="team-modal-credentials">${member.credentials || member.role}</p>
+        </div>
+      </div>
+      ${bioHtml}
+      ${section("Experience", member.experience)}
+      ${section("Education", member.education)}
+      ${practiceAreasHtml}
+    `;
+
+    modal.setAttribute("aria-hidden", "false");
+    const closeBtn = modal.querySelector(".modal-close");
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeTeamModal() {
+    const modal = document.getElementById("teamModal");
+    if (!modal) return;
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  function initTeamModal() {
+    const modal = document.getElementById("teamModal");
+    const grid = document.getElementById("teamGrid");
+    if (!modal || !grid) return;
+
+    grid.addEventListener("click", (e) => {
+      const card = e.target.closest("[data-team-index]");
+      if (!card) return;
+      openTeamModal(Number(card.dataset.teamIndex));
+    });
+
+    modal.querySelectorAll("[data-modal-close]").forEach((el) => {
+      el.addEventListener("click", closeTeamModal);
+    });
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal.querySelector(".modal-overlay")) closeTeamModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") closeTeamModal();
+    });
   }
 
   function initials(name) {
@@ -1219,6 +1309,7 @@
     initChatbot();
     initScrollReveal();
     initAppointmentModal();
+    initTeamModal();
     setYear();
 
     const practiceParam = new URLSearchParams(window.location.search).get("practice");
