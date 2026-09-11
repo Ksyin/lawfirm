@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Practice Area | A.A. Mudanya &amp; Co. Advocates</title>
-  <meta name="description" content="Detailed legal practice area information from A.A. Mudanya & Co. Advocates.">
+  <title>Insight | A.A. Mudanya &amp; Co. Advocates</title>
+  <meta name="description" content="Legal insights and guidance from A.A. Mudanya & Co. Advocates.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
   </header>
 
   <main>
-    <section class="practice-detail-page practice-detail-page--full" id="practicePage" aria-live="polite"></section>
+    <section class="practice-detail-page practice-detail-page--full insight-page" id="insightPage" aria-live="polite"></section>
   </main>
 
   <footer class="site-footer">
@@ -137,23 +137,5 @@
   <script src="firebase-init.js"></script>
   <script src="content-loader.js"></script>
   <script src="script.js"></script>
-
-  <!-- Appointment Modal -->
-  <div class="modal" id="appointmentModal" aria-hidden="true">
-    <div class="modal-overlay" data-modal-close></div>
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" data-modal-close aria-label="Close">×</button>
-      <h3 id="modalTitle">Book an Appointment</h3>
-      <form id="appointmentForm" class="appointment-form">
-        <input type="hidden" id="appointmentPractice" name="practice">
-        <div class="form-field"><label for="apptName">Full name</label><input id="apptName" name="fullName" required></div>
-        <div class="form-field"><label for="apptEmail">Email</label><input id="apptEmail" name="email" type="email" required></div>
-        <div class="form-field"><label for="apptPhone">Phone</label><input id="apptPhone" name="phone" required></div>
-        <div class="form-field"><label for="apptDate">Preferred date & time</label><input id="apptDate" name="datetime" type="datetime-local"></div>
-        <div class="form-field"><label for="apptMessage">Message</label><textarea id="apptMessage" name="message" rows="3"></textarea></div>
-        <div style="display:flex;gap:10px;margin-top:12px;"><button type="submit" class="btn btn-primary">Request Appointment</button><button type="button" class="btn btn-light" data-modal-close>Cancel</button></div>
-      </form>
-    </div>
-  </div>
 </body>
 </html>
